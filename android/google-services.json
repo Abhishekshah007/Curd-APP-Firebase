@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "456728648825",
+    "project_id": "user-database-promact",
+    "storage_bucket": "user-database-promact.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:456728648825:android:9cc00ef0b60f0b6ab748a8",
+        "android_client_info": {
+          "package_name": "com.example.myapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "456728648825-7j39r8ki0m94gc574fjpk99dtmhat2sl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUyzPWJoq8LH5_gzPkrVgTKojhxj0oZHw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "456728648825-7j39r8ki0m94gc574fjpk99dtmhat2sl.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "456728648825-j9fjjeqnkoevr8il44hsjnsh26slh54u.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.userApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
