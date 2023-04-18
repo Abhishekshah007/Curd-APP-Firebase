@@ -7,7 +7,7 @@ import 'UserDetail_Screen.dart';
 import 'adding_screen.dart';
 
 class UserList extends StatefulWidget {
-  const UserList({super.key});
+  const UserList({Key? key}) : super(key: key);
 
   @override
   State<UserList> createState() => _UserListState();
@@ -16,7 +16,7 @@ class UserList extends StatefulWidget {
 class _UserListState extends State<UserList> {
   final List<Map<dynamic, dynamic>> _usersData = [];
 
-  void UpdatedUsersList(dynamic data) {
+  void updatedUsersList(dynamic data) {
     if (data != null) {
       setState(() {
         _usersData.clear();
@@ -33,7 +33,7 @@ class _UserListState extends State<UserList> {
     DatabaseReference usersRef = FirebaseDatabase.instance.ref().child("users");
     usersRef.onValue.listen((event) {
       final data = event.snapshot.value;
-      UpdatedUsersList(data);
+      updatedUsersList(data);
     });
   }
 
@@ -60,7 +60,7 @@ class _UserListState extends State<UserList> {
                       onTap: () {
                         Navigator.push(context, MaterialPageRoute(
                           builder: (context) {
-                            return  UserDetail(_usersData[index]['number']);
+                            return UserDetail(_usersData[index]['number']);
                           },
                         ));
                       },
@@ -77,7 +77,8 @@ class _UserListState extends State<UserList> {
                                 onTap: () {
                                   Navigator.push(context, MaterialPageRoute(
                                     builder: (context) {
-                                      return  UpdateUserData( number: _usersData[index]["number"]);
+                                      return UpdateUserData(
+                                          number: _usersData[index]["number"]);
                                     },
                                   ));
                                 },
@@ -87,18 +88,11 @@ class _UserListState extends State<UserList> {
                                 padding: const EdgeInsets.only(left: 8.0),
                                 child: InkWell(
                                   onTap: () {
-
-                                    _deleteUser(_usersData[index]["number"]);
-                                    // Navigator.push(context, MaterialPageRoute(
-                                    //   builder: (context) {
-                                    //     return const UserDetail();
-                                    //   },
-                                    // ));
+                                    _deleteUser(index);
                                   },
                                   child: const Icon(Icons.delete),
                                 ),
                               ),
-
                             ],
                           ),
                         ),
@@ -113,7 +107,6 @@ class _UserListState extends State<UserList> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // Do something when the button is pressed
           Navigator.push(context, MaterialPageRoute(
             builder: (context) {
               return const AddingUsers();
@@ -125,17 +118,15 @@ class _UserListState extends State<UserList> {
       ),
     );
   }
-  void _deleteUser(String key) {
-    DatabaseReference usersRef =
-    FirebaseDatabase.instance.ref("users/$key");
-    usersRef.remove().then((_) =>
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('User added successfully!'),
-            backgroundColor: Colors.red,
-    ))
-    );
 
+  void _deleteUser(int index) async {
+    final user = _usersData[index];
+    final key = user.keys.first as String; // get the first (and only) key from the user map and cast it to String
+    await FirebaseDatabase.instance.ref().child("users").child(key).remove();
+    setState(() {
+      _usersData.removeAt(index);
+    });
   }
+
 
 }
