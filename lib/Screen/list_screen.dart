@@ -119,14 +119,16 @@ class _UserListState extends State<UserList> {
     );
   }
 
-  void _deleteUser(int index) async {
+  void _deleteUser(int index) {
     final user = _usersData[index];
-    final key = user.keys.first as String; // get the first (and only) key from the user map and cast it to String
-    await FirebaseDatabase.instance.ref().child("users").child(key).remove();
-    setState(() {
-      _usersData.removeAt(index);
+    final key = user.keys.first as String;
+    FirebaseDatabase.instance.ref().child("users").child(key).remove().then((value) {
+      setState(() {
+        _usersData.removeAt(index);
+      });
     });
   }
+
 
 
 }

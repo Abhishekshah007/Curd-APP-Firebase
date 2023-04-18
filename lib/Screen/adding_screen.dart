@@ -156,7 +156,7 @@ class _AddingUsersState extends State<AddingUsers> {
   void saveUserData() {
     String name = _name.text;
     String number = _number.text;
-    int age = int.parse(_age.text);
+    String age = _age.text;
     String message = _message.text;
 
     Map<String, dynamic> user = {

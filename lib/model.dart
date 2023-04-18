@@ -1,4 +1,3 @@
-import 'model.dart';
 
 class Student{
   String? key;
@@ -10,7 +9,7 @@ class Student{
 class UserStructure {
   late String name;
   late String number;
-  late int age;
+  late String age;
   late String message;
 
   UserStructure(this.name, this.number, this.age, this.message);
