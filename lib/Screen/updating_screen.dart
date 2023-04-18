@@ -3,7 +3,11 @@ import 'package:flutter/material.dart';
 import '../helping widget/appbar.dart';
 
 class UpdateUserData extends StatefulWidget {
-  const UpdateUserData({super.key});
+  final String number;
+
+  const UpdateUserData({super.key, required this.number});
+
+  // const UpdateUserData(this.number, {Key? key}) : super(key: key);
 
   @override
   State<UpdateUserData> createState() => _UpdateUserDataState();

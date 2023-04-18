@@ -1,3 +1,12 @@
+import 'model.dart';
+
+class Student{
+  String? key;
+  UserStructure? userStructure;
+
+  Student({this.key,this.userStructure});
+}
+
 class UserStructure {
   late String name;
   late String number;
@@ -5,7 +14,6 @@ class UserStructure {
   late String message;
 
   UserStructure(this.name, this.number, this.age, this.message);
-
 
   UserStructure.fromJson(Map<String, dynamic> json) {
     name = json['name'];
@@ -23,3 +31,6 @@ class UserStructure {
     return data;
   }
 }
+
+
+

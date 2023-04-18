@@ -77,7 +77,7 @@ class _UserListState extends State<UserList> {
                                 onTap: () {
                                   Navigator.push(context, MaterialPageRoute(
                                     builder: (context) {
-                                      return const UpdateUserData();
+                                      return  UpdateUserData( number: _usersData[index]["number"]);
                                     },
                                   ));
                                 },
